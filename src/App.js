@@ -41,8 +41,8 @@ function App(props) {
 
 	const choiceHandler = (item) => {
 		
-		console.log(item);
-		// setShowGamePage(true);
+		setChoice(item)
+		setShowGamePage(true);
 	};
 
 	const hideModal = () => {
@@ -61,7 +61,7 @@ function App(props) {
 			</header>
 			<section className='mainSection'>
 				{!showGamePage && <Main buttonArr={buttonObj} onChoice={choiceHandler} />}
-				{showGamePage && <ChooseScreen buttonArr={buttonObj}/>}
+				{showGamePage && <ChooseScreen buttonArr={buttonObj} chosenButton={choice}/>}
 				{modalState && <Modal onClose={hideModal}></Modal>}
 			</section>
 			<section className='footer'>
