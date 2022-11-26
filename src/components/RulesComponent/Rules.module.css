@@ -1,0 +1,16 @@
+.button{
+    
+    /* position: absolute;
+    bottom: 5%;
+    left:50%;
+    transform: translate(-50%,-50%); */
+    background-color: transparent;
+    border:1px solid white;
+    color:white;
+    padding: 0.5em 2em;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 8px;
+   
+}

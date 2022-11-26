@@ -1,0 +1,53 @@
+.buttons {
+	position: relative;
+	display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+	width: 450px;
+	/* padding-top: 2em; */
+
+	/* display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr; */
+	/* padding-top: 10em; */
+	/* justify-content: space-evenly;
+    align-content: center;
+     */
+
+	/* justify-content: center;align-items: center; */
+}
+.item2 {
+	grid-row-start: 2;
+	grid-row-end: 3;
+	grid-column: 2/3;
+}
+
+.triangle {
+	position: absolute;
+	width: 17em;
+	top:25%;
+	left: 25%;
+	z-index: -10;
+	transform: translate(-16%,-5%);
+}
+/* background color here for button  */
+.rockBgc {
+	background-image: radial-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+}
+.scisorsBgc {
+    
+	background-image: radial-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+}
+.paperBgc {
+	background-image: radial-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+}
+
+
+@media (min-width: 376px){
+	.triangle{
+		transform: translate(-10%,-5%);
+	}
+}
+
