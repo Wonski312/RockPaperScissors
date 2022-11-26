@@ -1,4 +1,5 @@
 import classes from "./Button.module.css";
+import "../Main/Main.module.css";
 
 const Button = (props) => {
 	const buttonClasses = `${classes.buttonBgc} ${props.color}`;

@@ -28,11 +28,11 @@ console.log(ButtonCtx);
 			<div className={classes.option}>
 				<div className={classes.circle}>
 					<Button
-						key={filteredButton.id}
-						color={filteredButton.color}
-						src={filteredButton.src}
-						grid={filteredButton.grid}
-						value={filteredButton.value}
+						key={filteredButton[0].id}
+						color={filteredButton[0].color}
+						src={filteredButton[0].src}
+						grid={filteredButton[0].grid}
+						value={filteredButton[0].value}
 					/>
 				</div>
 				<p className={classes.text}>You Picked</p>
