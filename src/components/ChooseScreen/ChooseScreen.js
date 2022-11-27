@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import classes from "./ChooseScreen.module.css";
 import Button from "../UI/Button";
@@ -10,9 +10,10 @@ import ButtonContext from "../../store/button-context";
 import "../Main/Main.module.css";
 
 const ChooseScreen = (props) => {
+	const [housePick, setHousePick] = useState();
 
 	const ButtonCtx = useContext(ButtonContext);
-console.log(ButtonCtx);
+	console.log(ButtonCtx);
 	// const buttons = {
 	// 	...props.buttonArr
 	// }
@@ -22,6 +23,42 @@ console.log(ButtonCtx);
 	);
 
 	console.log(filteredButton);
+
+	// const renderHouseButton = () =>{
+	// 	const rndInt = Math.floor(Math.random() * 3)
+	// 	console.log(rndInt);
+	// 	setHousePick(<Button
+	// 		key={ ButtonCtx.items[rndInt].id}
+	// 		color={ ButtonCtx.items[rndInt].color}
+	// 		src={ ButtonCtx.items[rndInt].src}
+	// 		grid={ ButtonCtx.items[rndInt].grid}
+	// 		value={ ButtonCtx.items[rndInt].value}
+	// 		/>)
+
+	// 			return
+	// }
+	// setTimeout(renderHouseButton,2000)
+
+	useEffect(() => {
+	const waitingForNPC = setTimeout(() => {
+			const rndInt = Math.floor(Math.random() * 3);
+			console.log(rndInt);
+			setHousePick(
+				<Button
+					key={ButtonCtx.items[rndInt].id}
+					color={ButtonCtx.items[rndInt].color}
+					src={ButtonCtx.items[rndInt].src}
+					grid={ButtonCtx.items[rndInt].grid}
+					value={ButtonCtx.items[rndInt].value}
+				/>
+			);
+		}, 2000);
+
+	
+		return () => {
+			clearTimeout(waitingForNPC);
+		};
+	}, [housePick, ButtonCtx.items]);
 
 	return (
 		<div className={classes.chooseScreen}>
@@ -38,7 +75,16 @@ console.log(ButtonCtx);
 				<p className={classes.text}>You Picked</p>
 			</div>
 			<div className={classes.option}>
-				<div className={classes.circle}></div>
+				<div className={classes.circle}>
+					{housePick}
+					{/* <Button 
+					key={ ButtonCtx.items[rndInt].id}
+					color={ ButtonCtx.items[rndInt].color}
+					src={ ButtonCtx.items[rndInt].src}
+					grid={ ButtonCtx.items[rndInt].grid}
+					value={ ButtonCtx.items[rndInt].value}
+					/> */}
+				</div>
 				<p className={classes.text}>The House Picked</p>
 			</div>
 		</div>
