@@ -1,3 +1,9 @@
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;align-items: center;
+}
+
 .chooseScreen{
     padding-top: 3rem;
     display: flex;
@@ -16,7 +22,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    background-color: transparent;
+    background-color:transparent;
 }
 
 .text{
