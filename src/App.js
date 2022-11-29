@@ -54,6 +54,11 @@ function App(props) {
 		setModalState(true);
 	};
 
+	const resetHandler =(reset)=>{
+		setChoice(reset);
+		setShowGamePage(reset);
+	}
+
 	return (
 		<div className='wrapper'>
 			<header className='header'>
@@ -61,7 +66,7 @@ function App(props) {
 			</header>
 			<section className='mainSection'>
 				{!showGamePage && <Main buttonArr={buttonObj} onChoice={choiceHandler} />}
-				{showGamePage && <ChooseScreen buttonArr={buttonObj} chosenButton={choice}/>}
+				{showGamePage && <ChooseScreen buttonArr={buttonObj} chosenButton={choice} onReset={resetHandler}/>}
 				{modalState && <Modal onClose={hideModal}></Modal>}
 			</section>
 			<section className='footer'>
