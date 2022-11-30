@@ -1,4 +1,4 @@
-import  {useState, useContext, useEffect, useCallback} from "react";
+import  {useState, useContext, useEffect, useRef} from "react";
 
 import classes from "./ChooseScreen.module.css";
 import Button from "../UI/Button";
@@ -13,16 +13,15 @@ import "../Main/Main.module.css";
 const ChooseScreen = (props) => {
 	const [housePick, setHousePick] = useState(null);
 	const [gameResult, setGameResult]=useState(false);
-	// const [result, setResult] =useState('')
+	const result =useRef('')
 
-	const [housePickvalue, setHousePickValue] = useState(null);
+	const housePickvalue = useRef(null);
 	const [playAgain, setPlayAgain]=useState(false);
 
 	
-
-   
-
-
+	
+	
+	
 	
 	
 	const ButtonCtx = useContext(ButtonContext);
@@ -33,6 +32,7 @@ const ChooseScreen = (props) => {
 		const filteredButton = ButtonCtx.items.filter(
 			(item) => item.value === props.chosenButton
 			);
+			const playerChoice = useRef(filteredButton[0].value)
 			// setPlayerPickValue(filteredButton[0].value);
 		
 		// const renderHouseButton = () =>{
@@ -58,7 +58,7 @@ const ChooseScreen = (props) => {
 				const waitingForNPC = setTimeout(() => {
 					
 					const rndInt = Math.floor(Math.random() * 3);
-							setHousePickValue(ButtonCtx.items[rndInt].value)
+							housePickvalue.current = ButtonCtx.items[rndInt].value
 					setHousePick(
 						<Button
 						key={ButtonCtx.items[rndInt].id}
@@ -75,36 +75,37 @@ const ChooseScreen = (props) => {
 						clearTimeout(waitingForNPC);
 					};
 				}, [housePick, ButtonCtx.items]);
-				
-				
-				const sendValues = () =>{
-
-				}
+			
 
 				const game = {
-					playerChoice: filteredButton[0].value,
+					playerChoice: playerChoice,
 					houseChoice: housePickvalue
 				}
 
-				const playerChoice = filteredButton[0].value;
-    const houseChoice = housePickvalue
+				if (game.playerChoice.current == game.houseChoice.current){
+					setGameResult(true)
+					result.current = <p>draw</p>
+				}
 
-	console.log(playerChoice);
-    console.log(houseChoice);
+	// 			const playerChoice = filteredButton[0].value;
+    // const houseChoice = housePickvalue
 
-	const draw = <p>DRAW</p>
-	const lose =<p>LOSE</p>
-	const win = <p>WIN</p>
+	// console.log(game.playerChoice);
+    // console.log(game.houseChoice);
+
+	// const draw = <p>DRAW</p>
+	// const lose =<p>LOSE</p>
+	// const win = <p>WIN</p>
 	
-		if(playerChoice === 'paper' && houseChoice === 'paper'){
-			           setGameResult(true) 
-			       }
+		// if(playerChoice === 'paper' && houseChoice === 'paper'){
+		// 	          return setGameResult(true) 
+		// 	       }
 
 	
 
 				
 				const gameResetHandler = () =>{
-					setHousePickValue(null)
+					// setHousePickValue(null)
 					setHousePick(null);
 					props.onReset(null)
 				}
@@ -140,7 +141,7 @@ const ChooseScreen = (props) => {
 			</div>
 			
 		</div>
-		{gameResult && draw}
+		{gameResult && result}
 		{housePickvalue && <PlayAgainButton gameChoices={game} onClick={gameResetHandler}/>}
 		</div>
 	);

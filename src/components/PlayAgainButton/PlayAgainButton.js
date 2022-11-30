@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useRef } from 'react';
 import classes from './PlayAgainButton.module.css';
 
 
@@ -6,32 +6,26 @@ import classes from './PlayAgainButton.module.css';
 
 const PlayAgainButton =(props) =>{
 
-//     const [gameResult, setGameResult]=useState(false)
+    const [gameResult, setGameResult]=useState(false)
 // const [result, setResult] =useState('')
-    // const playerChoice = props.gameChoices.playerChoice
-    // const houseChoice = props.gameChoices.houseChoice
+    const playerChoice = props.gameChoices.playerChoice
+    const houseChoice = props.gameChoices.houseChoice
 
-    // console.log(playerChoice);
-    // console.log(houseChoice);
+    const result = useRef()
 
-//    useCallback(() =>{
-//        if(playerChoice === houseChoice){
-//            setGameResult(true) 
-//            setResult(<p>DRAW</p>) 
-//            console.log(result);
-//        }
+    console.log(playerChoice);
+    console.log(houseChoice);
 
-//    },[houseChoice,playerChoice,result])
-    
-    // if(playerChoice === houseChoice){
-    //     setGameResult(true) 
-    //     setResult(<p>DRAW</p>) 
-    // }
-    
+   
+    //    if(playerChoice.current == houseChoice.current){
+    //        setGameResult(true) 
+    //       result.current = <p>DRAW</p> 
+    //        console.log(result);
+    //    }
  
     return <div>
 
-{/* {gameResult&& result} */}
+{gameResult&& result}
         <button className={classes.button} onClick={props.onClick}>
 Play Again
     </button>
