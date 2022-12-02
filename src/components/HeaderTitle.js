@@ -1,6 +1,10 @@
+import { useRef } from "react";
+
 import classes from "./HeaderTitle.module.css";
 
-const HeaderTitle = () => {
+const HeaderTitle = (props) => {
+let score = useRef(0);
+score.current = props.scoreProp
 	return (
 		<header className={`${classes.box}`}>
 			<div className={classes.title}>
@@ -8,7 +12,7 @@ const HeaderTitle = () => {
 			</div>
 			<div className={classes.score} >
 				<p className={classes.scoreText}>Score</p>
-				<p className={classes.scoreNumber}>12</p>
+				<p className={classes.scoreNumber}>{score.current}</p>
 			</div>
 		</header>
 	);

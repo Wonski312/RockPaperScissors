@@ -5,10 +5,14 @@
     border:1px solid white;
     color: hsl(229, 25%, 31%);
     padding: 0.5em 2em;
-    margin-top: 2em;
+    /* margin-top: 2em; */
     font-size: 1.2rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     border-radius: 8px;
    
+}.result{
+    text-align: center;
+    color:white;
+    font-size: 2rem;
 }

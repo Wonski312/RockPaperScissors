@@ -38,6 +38,7 @@ function App(props) {
 	const [modalState, setModalState] = useState(false);
 	const [showGamePage, setShowGamePage] = useState(false);
 	const [choice, setChoice] = useState(null);
+	const [score, setScore] = useState (0);
 
 	const choiceHandler = (item) => {
 		
@@ -59,14 +60,18 @@ function App(props) {
 		setShowGamePage(reset);
 	}
 
+	const setScoreHandler = (score) =>{
+		setScore(score)
+	}
+
 	return (
 		<div className='wrapper'>
 			<header className='header'>
-				<HeaderTitle />
+				<HeaderTitle scoreProp={score}/>
 			</header>
 			<section className='mainSection'>
 				{!showGamePage && <Main buttonArr={buttonObj} onChoice={choiceHandler} />}
-				{showGamePage && <ChooseScreen buttonArr={buttonObj} chosenButton={choice} onReset={resetHandler}/>}
+				{showGamePage && <ChooseScreen buttonArr={buttonObj} chosenButton={choice} onReset={resetHandler} onSetScore={setScoreHandler}/>}
 				{modalState && <Modal onClose={hideModal}></Modal>}
 			</section>
 			<section className='footer'>

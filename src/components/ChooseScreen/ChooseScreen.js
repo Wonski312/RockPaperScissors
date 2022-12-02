@@ -1,4 +1,4 @@
-import  {useState, useContext, useEffect, useRef} from "react";
+import  {useState, useContext, useEffect, useRef, useCallback} from "react";
 
 import classes from "./ChooseScreen.module.css";
 import Button from "../UI/Button";
@@ -17,12 +17,6 @@ const ChooseScreen = (props) => {
 
 	const housePickvalue = useRef(null);
 	const [playAgain, setPlayAgain]=useState(false);
-
-	
-	
-	
-	
-	
 	
 	const ButtonCtx = useContext(ButtonContext);
 	// const buttons = {
@@ -81,12 +75,15 @@ const ChooseScreen = (props) => {
 					playerChoice: playerChoice,
 					houseChoice: housePickvalue
 				}
+// useEffect(() => {
+// 	if (game.playerChoice.current === game.houseChoice.current){
+// 		setGameResult(true)
+// 		result.current = <p>draw</p>
+// 		console.log(result);
+// 	}
 
-				if (game.playerChoice.current == game.houseChoice.current){
-					setGameResult(true)
-					result.current = <p>draw</p>
-				}
-
+// },[game.houseChoice, game.playerChoice])
+				
 	// 			const playerChoice = filteredButton[0].value;
     // const houseChoice = housePickvalue
 
@@ -109,7 +106,10 @@ const ChooseScreen = (props) => {
 					setHousePick(null);
 					props.onReset(null)
 				}
-
+const Addscore=(score)=>{
+	const Addscore = score;
+	props.onSetScore(score);
+}
 				return (
 					<div className={classes.box}>
 		
@@ -141,8 +141,8 @@ const ChooseScreen = (props) => {
 			</div>
 			
 		</div>
-		{gameResult && result}
-		{housePickvalue && <PlayAgainButton gameChoices={game} onClick={gameResetHandler}/>}
+		{/* {gameResult && <p className={classes.result}>{result}</p>} */}
+		{housePick && <PlayAgainButton gameChoices={game} onClick={gameResetHandler} onScore={Addscore}/>}
 		</div>
 	);
 };
