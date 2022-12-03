@@ -38,7 +38,7 @@ function App(props) {
 	const [modalState, setModalState] = useState(false);
 	const [showGamePage, setShowGamePage] = useState(false);
 	const [choice, setChoice] = useState(null);
-	const [score, setScore] = useState (0);
+	const [score, setScore] = useState ([0]);
 
 	const choiceHandler = (item) => {
 		
@@ -59,8 +59,10 @@ function App(props) {
 		setChoice(reset);
 		setShowGamePage(reset);
 	}
+	// const scoreArr = [];
 
 	const setScoreHandler = (score) =>{
+		
 		setScore(score)
 	}
 

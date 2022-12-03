@@ -1,10 +1,24 @@
-import { useRef } from "react";
+import { useRef,useCallback } from "react";
 
 import classes from "./HeaderTitle.module.css";
 
 const HeaderTitle = (props) => {
-let score = useRef(0);
-score.current = props.scoreProp
+let score = useRef([]);
+
+
+// const scoreArr = [];
+// scoreArr.push(props.scoreProp);
+// console.log(scoreArr);
+score.current.push(props.scoreProp);
+
+
+// useCallback(()=>{
+// 	const scoreArr = [];
+// scoreArr.push(props.scoreProp);
+// console.log(scoreArr);
+// score.current = scoreArr;
+// },[props])
+// score.current = props.scoreProp
 	return (
 		<header className={`${classes.box}`}>
 			<div className={classes.title}>
