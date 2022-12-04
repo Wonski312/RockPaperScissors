@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import hand from "./images/icon-paper.svg";
 import rock from "./images/icon-rock.svg";
 import scissors from "./images/icon-scissors.svg";
@@ -38,7 +38,8 @@ function App(props) {
 	const [modalState, setModalState] = useState(false);
 	const [showGamePage, setShowGamePage] = useState(false);
 	const [choice, setChoice] = useState(null);
-	const [score, setScore] = useState ([0]);
+	const [score, setScore] = useState (0);
+	// console.log(score);
 
 	const choiceHandler = (item) => {
 		
@@ -58,6 +59,7 @@ function App(props) {
 	const resetHandler =(reset)=>{
 		setChoice(reset);
 		setShowGamePage(reset);
+		setScore(0)
 	}
 	// const scoreArr = [];
 

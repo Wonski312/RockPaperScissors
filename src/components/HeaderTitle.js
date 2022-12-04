@@ -1,15 +1,23 @@
-import { useRef,useCallback } from "react";
+import { useRef,useCallback, useEffect } from "react";
 
 import classes from "./HeaderTitle.module.css";
 
 const HeaderTitle = (props) => {
-let score = useRef([]);
+let score = useRef(0);
+// console.log(score);
 
+// useEffect(()=>{
+// 	const newScore = [...score.current, props.scoreProp]
+// 	function sum(a,b){
+// 		newScore(a,b);
+// 	}
+// 	score.current = newScore;
+// },)
 
+score.current = score.current +  props.scoreProp;
 // const scoreArr = [];
 // scoreArr.push(props.scoreProp);
 // console.log(scoreArr);
-score.current.push(props.scoreProp);
 
 
 // useCallback(()=>{

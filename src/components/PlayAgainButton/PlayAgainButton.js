@@ -12,7 +12,10 @@ const PlayAgainButton =(props) =>{
     const houseChoice = props.gameChoices.houseChoice
 
     const result = useRef();
+// const [score, setScore] = useState(0)
 
+// console.log(score);
+// console.log(score);
     // const scoredArr = [];
 
 // const [scored,setScored] = useState([])
@@ -23,20 +26,64 @@ const PlayAgainButton =(props) =>{
     if(playerChoice.current === houseChoice.current){
         setGameResult(true) 
        result.current = <p>DRAW</p>
-    //    scoredArr.push(0) 
-       props.onScore(0)
+// setScore((prevState)=>{return prevState})
+    //    score.current = score.current + 0;
+       props.onScore(0);
     }else if (playerChoice.current === 'paper' && houseChoice.current === 'rock'){
         setGameResult(true)
         result.current = <p>YOU WIN</p>
-        // scoredArr.push(1) 
-
+        // score.current = score.current + 1
+        // setScore((prevState)=>{return prevState+1})
+// return 
         props.onScore(1)
     }else if (playerChoice.current === 'paper' && houseChoice.current === 'scisors'){
         setGameResult(true)
         result.current = <p>YOU LOSE</p>
+        // setScore((prevState)=>{ 
+        //     return prevState-1
+        // })
 
-        // scoredArr.push(-1)
+        // score.current = score.current -1 
         props.onScore(-1)
+        // return
+    }
+    else if (playerChoice.current === 'scisors' && houseChoice.current === 'paper'){
+        setGameResult(true)
+        result.current = <p>YOU WIN</p>
+        // score.current = score.current + 1
+        // setScore((prevState)=>{return prevState+1})
+// return 
+        props.onScore(1)
+    }
+    else if (playerChoice.current === 'scisors' && houseChoice.current === 'rock'){
+        setGameResult(true)
+        result.current = <p>YOU LOSE</p>
+        // setScore((prevState)=>{ 
+        //     return prevState-1
+        // })
+
+        // score.current = score.current -1 
+        props.onScore(-1)
+        // return
+    }
+    else if (playerChoice.current === 'rock' && houseChoice.current === 'scisors'){
+        setGameResult(true)
+        result.current = <p>YOU WIN</p>
+        // score.current = score.current + 1
+        // setScore((prevState)=>{return prevState+1})
+// return 
+        props.onScore(1)
+    }
+    else if (playerChoice.current === 'rock' && houseChoice.current === 'paper'){
+        setGameResult(true)
+        result.current = <p>YOU LOSE</p>
+        // setScore((prevState)=>{ 
+        //     return prevState-1
+        // })
+
+        // score.current = score.current -1 
+        props.onScore(-1)
+        // return
     }
    },[houseChoice,playerChoice,props])
        
