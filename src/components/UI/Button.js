@@ -8,11 +8,9 @@ const Button = (props) => {
 		<div className={btngrid} onClick={props.onClick} value={props.value}>
 			<div className={buttonClasses}>
 				<div className={classes.buttonInside}>
-					<img src={props.src} />
+					<img src={props.src} alt={props.alt} />
 				</div>
 			</div>
-
-			{/* <img src={props.src}></img> */}
 		</div>
 	);
 };

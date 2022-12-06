@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import hand from "./images/icon-paper.svg";
 import rock from "./images/icon-rock.svg";
 import scissors from "./images/icon-scissors.svg";
@@ -39,8 +39,6 @@ function App(props) {
 	const [showGamePage, setShowGamePage] = useState(false);
 	const [choice, setChoice] = useState(null);
 	const [score, setScore] = useState (0);
-	// console.log(score);
-
 	const choiceHandler = (item) => {
 		
 		setChoice(item)
@@ -61,7 +59,6 @@ function App(props) {
 		setShowGamePage(reset);
 		setScore(0)
 	}
-	// const scoreArr = [];
 
 	const setScoreHandler = (score) =>{
 		
